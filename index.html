@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <title>Is It A Good Time To Buy Dogecoin?</title>
+  <description>All the information you will ever need about Dogecoin</description>
+  <style>
+    @font-face {
+      font-family: ComicSans;
+      src: url("./font/Qdbettercomicsans-jEEeG.ttf") format('truetype');
+    }
+    html {
+      font-family: ComicSans;
+      background-color: white;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      max-width: 950px;
+      font-size: 120px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url(doge-main.jpg);
+      background-position: center center;
+      text-align: center;
+      font-family: ComicSans;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: turner 6s infinite linear;
+    }
+    .text {
+      font-weight: 100;
+    }
+    @keyframes turner {
+        from{  transform: rotateY(0deg)   }
+        to  {  transform: rotateY(360deg) }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1 class="text">Yes</h1>
+  </main>
+  <script>
+    function MovingTitle(writeText, interval, visibleLetters) {
+        var _instance = {};
+
+        var _currId = 0;
+        var _numberOfLetters = writeText.length;
+
+        function updateTitle() {
+            _currId += 1;
+            if(_currId > _numberOfLetters - 1) {
+                _currId = 0; 
+            }
+
+            var startId = _currId;
+            var endId = startId + visibleLetters;
+            var finalText;
+            if(endId < _numberOfLetters - 1) {
+                finalText = writeText.substring(startId, endId);
+            } else {
+                var cappedEndId = _numberOfLetters;
+                endId = endId - cappedEndId;
+
+                finalText = writeText.substring(startId, cappedEndId) +     writeText.substring(0, endId);
+            }
+
+            document.title = finalText; 
+        }
+
+        _instance.init = function() {
+            setInterval(updateTitle, interval);
+        };
+
+        return _instance;
+    }
+    var title = new MovingTitle("Is It A Good Time To Buy Dogecoin? ", 250, 50);
+    title.init();
+  </script>
+</body>
+</html>
